@@ -1,0 +1,60 @@
+/* ══════════════════════════════════════════════════════════════
+   Design tokens — single source of rhythm.
+   Every reveal, hover and transition on the site pulls from here.
+   ══════════════════════════════════════════════════════════════ */
+:root{
+  /* ── Surface ────────────────────────────────────────────── */
+  --ivory:#FBF8F3;
+  --bone:#F4EDE3;
+  --sand:#E8DCCA;
+  --line:#E2D6C3;
+  --noir:#171310;
+  --paper:#F6E5DB;          /* sampled from the envelope's own stock */
+
+  /* ── Ink — each verified against its intended ground ────── */
+  --espresso:#241C17;       /* 15.8:1 on ivory */
+  --umber:#5C4E44;          /*  7.5:1 on ivory */
+  --gold-ink:#7C6033;       /*  5.5:1 on ivory — gold used as text */
+  --gold:#A98B5D;           /*  3.0:1 — decorative + large display only */
+  --rose:#B4737A;           /*  decorative only */
+
+  /* ── Type ───────────────────────────────────────────────── */
+  --display:'Sentient','Cormorant Garamond',Georgia,serif;
+  --sans:'General Sans','Jost',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  /* Handwriting pair — used nowhere but the opened letter (.sheet__*).
+     Everywhere else on the site stays on --display/--sans; a script
+     face only earns its place where the content is a personal note. */
+  --script:'Alex Brush',cursive;         /* greeting + signature   */
+  --hand:'Caveat','Alex Brush',cursive;  /* body — casual, legible */
+
+  /* ── Space (spacious: density 3/10) ─────────────────────── */
+  --s1:.5rem; --s2:1rem; --s3:1.5rem; --s4:2rem;
+  --s5:3rem; --s6:4rem; --s7:6rem; --s8:9rem;
+  --sec:clamp(5rem,11vw,9.5rem);
+
+  --wrap:1240px;
+  --frame:clamp(10px,1.6vw,22px);
+  --gap:clamp(10px,1.4vw,20px);
+
+  /* ── Motion ─────────────────────────────────────────────────
+     Weight matters: heavy things move slower and settle later.
+     Nothing bounces, nothing spins, nothing zooms.            */
+  --e-out:cubic-bezier(.22,1,.36,1);      /* things arriving  */
+  --e-in:cubic-bezier(.55,0,1,.45);       /* things leaving   */
+  --e-soft:cubic-bezier(.4,0,.2,1);       /* state changes    */
+
+  --t-tap:120ms;      /* immediate — press, tap acknowledgement */
+  --t-ui:220ms;       /* light   — buttons, links, chips        */
+  --t-state:380ms;    /* medium  — accordions, toggles, menus   */
+  --t-reveal:900ms;   /* heavy   — text blocks becoming present */
+  --t-image:1250ms;   /* heaviest — large photography           */
+
+  --z-nav:100; --z-menu:200; --z-lb:400; --z-curtain:500;
+}
+
+/* Motion tokens collapse to near-zero when the visitor asks for less. */
+@media (prefers-reduced-motion:reduce){
+  :root{
+    --t-tap:1ms; --t-ui:1ms; --t-state:1ms; --t-reveal:1ms; --t-image:1ms;
+  }
+}

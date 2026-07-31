@@ -79,7 +79,7 @@ function MobilePricing({ active, setActive, tab, reduced }) {
         </HeadingReveal>
         <Reveal delay={0.12}>
           <p className="mx-auto mt-2 text-pretty text-sm leading-relaxed text-muted">
-            Every bridal experience includes everything listed above.
+            {pricing.intro}
           </p>
         </Reveal>
         <Reveal delay={0.16} className="mt-3 flex justify-center">
@@ -173,9 +173,6 @@ function MobilePricing({ active, setActive, tab, reduced }) {
           Get in Touch
           <ArrowRightIcon className="h-[16px] w-[16px] transition-transform duration-200 ease-[var(--ease-signature)] group-hover:translate-x-1" />
         </Link>
-        <p className="text-[0.65rem] uppercase tracking-[0.14em] text-muted/80">
-          Tap a service to view details
-        </p>
       </Reveal>
     </div>
   );

@@ -1,0 +1,817 @@
+/* ══════════════════════════════════════════════════════════════
+   Makeup by Kamya Mehta
+   Ivory & antique gold · editorial bridal
+   ══════════════════════════════════════════════════════════════ */
+
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:5rem}
+body{
+  margin:0;background:var(--ivory);color:var(--espresso);
+  font-family:var(--sans);font-weight:300;font-size:1.0625rem;line-height:1.75;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img,video{display:block;max-width:100%}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{margin:0;font-weight:400;line-height:1.08}
+p{margin:0}
+::selection{background:var(--sand);color:var(--espresso)}
+
+.wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:clamp(1.25rem,5vw,2.5rem)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+.skip-link{
+  position:fixed;top:.75rem;left:.75rem;z-index:600;
+  background:var(--espresso);color:var(--ivory);padding:.7rem 1.1rem;
+  border-radius:2px;transform:translateY(-200%);transition:transform var(--t-ui)
+}
+.skip-link:focus-visible{transform:none}
+
+:where(a,button,input,textarea,summary,[tabindex]):focus-visible{
+  outline:2px solid var(--gold-ink);outline-offset:3px;border-radius:2px
+}
+
+/* ── Shared type ────────────────────────────────────────────── */
+.eyebrow{
+  font-family:var(--sans);font-size:.6875rem;font-weight:400;
+  letter-spacing:.34em;text-transform:uppercase;color:var(--gold-ink);
+  margin-bottom:var(--s3)
+}
+.eyebrow--center{text-align:center}
+.eyebrow--light{color:var(--sand)}
+.eyebrow::before{
+  content:"";display:inline-block;width:1.6rem;height:1px;
+  background:currentColor;vertical-align:middle;margin-right:.8rem;opacity:.6
+}
+.eyebrow--center::before{margin-left:.8rem}
+
+.sec-title{
+  font-family:var(--display);font-weight:300;
+  font-size:clamp(2.4rem,6.2vw,4.4rem);letter-spacing:-.015em;line-height:1.02
+}
+.sec-title--light{color:var(--ivory)}
+.sec-sub{
+  margin-top:var(--s3);color:var(--umber);font-size:1.0625rem;
+  max-width:46ch;line-height:1.75
+}
+.sec-sub--light{color:var(--sand);opacity:.92}
+.sec-head{margin-bottom:var(--s6);max-width:56ch}
+.sec-head--center{margin-inline:auto;text-align:center}
+.sec-head--center .sec-sub{margin-inline:auto}
+
+.body{color:var(--umber);margin-bottom:var(--s3);max-width:52ch}
+.body--quiet{font-family:var(--display);font-style:italic;font-size:1.3rem;color:var(--gold-ink);line-height:1.6}
+.lede{color:var(--umber);max-width:50ch;margin-top:var(--s4)}
+
+.statement{
+  font-family:var(--display);font-weight:300;
+  font-size:clamp(1.9rem,4.4vw,3.05rem);line-height:1.22;letter-spacing:-.012em;
+  max-width:20ch
+}
+.statement em{font-style:italic;color:var(--gold-ink)}
+
+.link-arrow{
+  display:inline-flex;align-items:center;gap:.6rem;margin-top:var(--s4);
+  font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;color:var(--espresso);
+  padding-block:.6rem
+}
+.link-arrow svg{width:1.15rem;height:1.15rem;fill:none;stroke:currentColor;stroke-width:1.3;
+  transition:transform var(--t-state) var(--e-out)}
+.link-arrow:hover svg{transform:translateX(5px)}
+.link-arrow::after{
+  content:"";position:absolute;/* underline handled by border */
+}
+.link-arrow{position:relative;border-bottom:1px solid var(--line);padding-bottom:.45rem}
+.link-arrow:hover{border-color:var(--gold)}
+
+/* ── Buttons ────────────────────────────────────────────────── */
+.btn{
+  --btn-bg:transparent;--btn-fg:var(--espresso);--btn-bd:currentColor;
+  display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
+  min-height:52px;padding:.9rem 2rem;
+  background:var(--btn-bg);color:var(--btn-fg);border:1px solid var(--btn-bd);
+  border-radius:999px;font-size:.75rem;font-weight:400;
+  letter-spacing:.2em;text-transform:uppercase;white-space:nowrap;
+  transition:background var(--t-state) var(--e-out),color var(--t-state) var(--e-out),
+             border-color var(--t-state) var(--e-out),transform var(--t-ui) var(--e-out);
+}
+.btn:hover{transform:translateY(-1px)}
+.btn:active{transform:translateY(0) scale(.985)}
+.btn--solid{--btn-bg:var(--espresso);--btn-fg:var(--ivory);--btn-bd:var(--espresso)}
+.btn--solid:hover{--btn-bg:#3A2E26;--btn-bd:#3A2E26}
+.btn--ghost{--btn-fg:var(--ivory);--btn-bd:rgba(251,248,243,.5)}
+.btn--ghost:hover{--btn-bg:rgba(251,248,243,.12);--btn-bd:var(--ivory)}
+.btn--gold{--btn-bg:var(--gold-ink);--btn-fg:var(--ivory);--btn-bd:var(--gold-ink)}
+.btn--gold:hover{--btn-bg:#8E6E3B;--btn-bd:#8E6E3B}
+.btn--sm{min-height:42px;padding:.55rem 1.35rem;font-size:.6875rem}
+.btn--block{width:100%}
+.btn__ico{width:1.15rem;height:1.15rem;fill:none;stroke:currentColor;stroke-width:1.4;
+  stroke-linecap:round;stroke-linejoin:round}
+
+/* ── Opening curtain ────────────────────────────────────────── */
+.curtain{
+  position:fixed;inset:0;z-index:var(--z-curtain);background:var(--ivory);
+  display:grid;place-items:center;transition:transform 900ms var(--e-out)
+}
+.curtain.is-up{transform:translateY(-101%)}
+.curtain__inner{text-align:center;display:grid;justify-items:center;gap:.7rem}
+.curtain__eyebrow{
+  font-size:.6875rem;letter-spacing:.36em;text-transform:uppercase;color:var(--gold-ink);
+  opacity:0;animation:cIn 640ms var(--e-out) 120ms forwards
+}
+.curtain__name{
+  font-family:var(--display);font-weight:300;font-size:clamp(2.2rem,8vw,3.8rem);
+  letter-spacing:.01em;opacity:0;animation:cIn 760ms var(--e-out) 240ms forwards
+}
+.curtain__rule{
+  width:0;height:1px;background:var(--gold);
+  animation:cRule 760ms var(--e-out) 420ms forwards
+}
+@keyframes cIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes cRule{to{width:clamp(80px,22vw,190px)}}
+
+/* ── Nav ────────────────────────────────────────────────────── */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:var(--z-nav);
+  padding-top:env(safe-area-inset-top);
+  transition:background var(--t-state) var(--e-out),box-shadow var(--t-state) var(--e-out)
+}
+.nav__bar{
+  max-width:var(--wrap);margin-inline:auto;
+  padding:1.15rem clamp(1.25rem,5vw,2.5rem);
+  display:flex;align-items:center;gap:var(--s4);
+  color:var(--ivory);transition:color var(--t-state) var(--e-out)
+}
+.nav.is-stuck{background:rgba(251,248,243,.94);backdrop-filter:blur(14px);
+  box-shadow:0 1px 0 var(--line)}
+.nav.is-stuck .nav__bar{color:var(--espresso)}
+
+.nav__brand{display:grid;line-height:1;margin-right:auto}
+.nav__brand-sm{font-size:.5625rem;letter-spacing:.34em;text-transform:uppercase;opacity:.75;margin-bottom:.32rem}
+.nav__brand-lg{font-family:var(--display);font-size:1.32rem;letter-spacing:.02em}
+
+.nav__links{display:flex;gap:var(--s4)}
+.nav__links a{
+  position:relative;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
+  padding-block:.45rem;opacity:.88
+}
+.nav__links a::after{
+  content:"";position:absolute;left:0;bottom:0;width:0;height:1px;
+  background:currentColor;transition:width var(--t-state) var(--e-out)
+}
+.nav__links a:hover{opacity:1}
+.nav__links a:hover::after{width:100%}
+.nav__cta{border-color:currentColor}
+.nav.is-stuck .nav__cta{--btn-bg:var(--espresso);--btn-fg:var(--ivory);--btn-bd:var(--espresso)}
+
+.nav__toggle{
+  display:none;width:44px;height:44px;background:none;border:0;padding:0;
+  place-items:center;align-content:center;gap:6px
+}
+.nav__toggle span{display:block;width:22px;height:1px;background:currentColor;
+  transition:transform var(--t-state) var(--e-out),opacity var(--t-ui)}
+.nav__toggle[aria-expanded="true"] span:first-child{transform:translateY(3.5px) rotate(45deg)}
+.nav__toggle[aria-expanded="true"] span:last-child{transform:translateY(-3.5px) rotate(-45deg)}
+
+/* Mobile menu */
+.menu{
+  position:fixed;inset:0;z-index:var(--z-menu);background:var(--ivory);
+  display:flex;flex-direction:column;
+  /* justify-content:center used to sit here. With 7 links + the CTA +
+     Instagram link taller than short viewports, a centered flex container
+     clips content equally above AND below — and since scrollTop can't go
+     negative, whatever centering pushed above the fold (the close button)
+     became permanently unreachable, not just visually clipped. flex-start
+     plus generous top padding keeps the same "centered" look when content
+     fits, and scrolls cleanly from the top when it doesn't. */
+  justify-content:flex-start;
+  padding:calc(6rem + env(safe-area-inset-top)) clamp(1.5rem,7vw,3rem) calc(2rem + env(safe-area-inset-bottom));
+  opacity:0;transition:opacity var(--t-state) var(--e-out);
+  overflow-y:auto;scrollbar-width:none
+}
+.menu::-webkit-scrollbar{display:none}
+/* [hidden] has the same specificity as a bare class, and author CSS beats
+   the UA stylesheet on a tie — so `display:flex` above was overriding the
+   browser's own `[hidden]{display:none}` and leaving this full-viewport
+   layer sitting over the whole page, invisible but still catching every
+   click, at all times. The attribute selector here outranks `.menu` alone. */
+.menu[hidden]{display:none}
+.menu.is-open{opacity:1}
+
+/* The hamburger icon lives in .nav, which this panel's higher z-index
+   fully covers once open — so without this, there was no way to close
+   the menu except Escape or tapping a link straight through to a section. */
+.menu__close{
+  position:absolute;top:calc(1.15rem + env(safe-area-inset-top));
+  right:clamp(1.25rem,5vw,2.5rem);
+  width:44px;height:44px;display:grid;place-items:center;
+  background:none;border:0;color:var(--espresso)
+}
+.menu__close svg{
+  width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.4;
+  stroke-linecap:round
+}
+.menu__links{display:grid;gap:.35rem;margin-bottom:auto}
+.menu__links a{
+  display:flex;align-items:baseline;gap:1.1rem;
+  font-family:var(--display);font-size:clamp(2rem,9vw,2.9rem);font-weight:300;
+  padding-block:.55rem;border-bottom:1px solid var(--line)
+}
+.menu__links a span{font-family:var(--sans);font-size:.625rem;letter-spacing:.24em;color:var(--gold-ink)}
+.menu__foot{display:grid;gap:var(--s3);padding-top:var(--s5)}
+.menu__ig{text-align:center;font-size:.75rem;letter-spacing:.16em;color:var(--umber)}
+
+/* ── Hero ───────────────────────────────────────────────────── */
+.hero{padding:var(--frame);background:var(--ivory)}
+.hero__frame{
+  position:relative;overflow:hidden;border-radius:3px;
+  height:calc(100svh - var(--frame)*2);min-height:560px
+}
+.hero__video,.hero__poster{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover
+}
+/* Scrim must hold contrast across EVERY frame of the loop, not one still */
+.hero__scrim{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(to top,rgba(23,19,16,.9) 0%,rgba(23,19,16,.74) 24%,
+                    rgba(23,19,16,.46) 46%,rgba(23,19,16,.12) 72%,
+                    rgba(23,19,16,.38) 100%)
+}
+.hero__content{
+  position:absolute;left:clamp(1.25rem,5vw,3.5rem);right:clamp(1.25rem,5vw,3.5rem);
+  bottom:clamp(5.5rem,13vh,8rem);color:var(--ivory);max-width:34ch;
+  text-shadow:0 1px 30px rgba(23,19,16,.55)
+}
+.hero__name{
+  font-family:var(--display);font-weight:300;
+  font-size:clamp(3.1rem,12.5vw,7.4rem);line-height:.94;letter-spacing:-.02em;
+  margin-bottom:var(--s3)
+}
+.hero__tagline{
+  font-size:clamp(.95rem,2.4vw,1.15rem);line-height:1.6;color:var(--sand);
+  margin-bottom:var(--s4)
+}
+.hero__actions{display:flex;flex-wrap:wrap;gap:.75rem}
+.hero__meta{
+  position:absolute;left:clamp(1.25rem,5vw,3.5rem);bottom:clamp(2rem,4.5vh,3rem);
+  font-size:.625rem;letter-spacing:.26em;text-transform:uppercase;color:var(--sand);opacity:.8
+}
+.hero__scroll{
+  position:absolute;right:clamp(1.25rem,5vw,3.5rem);bottom:clamp(2rem,4.5vh,3rem);
+  width:44px;height:64px;display:grid;place-items:end center
+}
+.hero__scroll-line{display:block;width:1px;height:54px;background:linear-gradient(var(--sand),transparent);
+  transform-origin:top;animation:scrollLine 2.4s ease-in-out infinite}
+@keyframes scrollLine{0%,100%{transform:scaleY(.4);opacity:.4}50%{transform:scaleY(1);opacity:1}}
+
+/* ── Marquee ────────────────────────────────────────────────── */
+.marquee{
+  padding-block:var(--s5);border-block:1px solid var(--line);
+  overflow:hidden;background:var(--ivory)
+}
+.marquee__label{
+  text-align:center;font-size:.625rem;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--gold-ink);margin-bottom:var(--s3)
+}
+.marquee__track{display:flex;width:max-content;animation:slide 42s linear infinite}
+.marquee:hover .marquee__track{animation-play-state:paused}
+.marquee__set{display:flex;align-items:center;gap:clamp(1.6rem,4vw,3.2rem);padding-right:clamp(1.6rem,4vw,3.2rem)}
+.marquee__set span{
+  font-family:var(--display);font-size:clamp(1.35rem,3.4vw,2.1rem);
+  letter-spacing:.06em;color:var(--espresso);white-space:nowrap
+}
+.marquee__set i{color:var(--gold);font-style:normal;font-size:1rem}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* ── I believe ──────────────────────────────────────────────── */
+.believe{padding-block:var(--sec)}
+.believe__grid{
+  display:grid;gap:clamp(2.5rem,6vw,5rem);align-items:center;
+  grid-template-columns:1fr
+}
+.believe__media{margin:0;overflow:hidden;border-radius:3px;background:var(--bone)}
+.believe__media video{width:100%;aspect-ratio:9/16;object-fit:cover}
+
+/* ── Portfolio ──────────────────────────────────────────────── */
+.portfolio{padding-block:var(--sec) 0}
+.gallery{
+  columns:1;column-gap:var(--gap);
+  padding-bottom:var(--sec)
+}
+.tile{
+  break-inside:avoid;margin:0 0 var(--gap);position:relative;
+  overflow:hidden;border-radius:3px;background:var(--bone);cursor:pointer
+}
+.tile img,.tile video{width:100%;height:auto;object-fit:cover;
+  transition:transform 900ms var(--e-out),filter 500ms var(--e-out)}
+.tile::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(23,19,16,.28),transparent 42%);
+  opacity:0;transition:opacity var(--t-state) var(--e-out);pointer-events:none
+}
+/* Hover-only zoom + darkening gradient, pointer devices only. Without this
+   gate, tapping a tile on a touch device leaves :hover "stuck" until the
+   next tap elsewhere — the dark gradient then sits on permanently, reading
+   as an unwanted black band across the bottom of the photo. */
+@media (hover:hover){
+  .tile:hover img,.tile:hover video{transform:scale(1.04)}
+  .tile:hover::after{opacity:1}
+}
+.tile__badge{
+  position:absolute;top:.85rem;right:.85rem;width:34px;height:34px;
+  display:grid;place-items:center;border-radius:50%;
+  background:rgba(23,19,16,.42);backdrop-filter:blur(6px);
+  border:1px solid rgba(251,248,243,.28);pointer-events:none
+}
+.tile__badge svg{width:15px;height:15px;fill:var(--ivory)}
+
+.sec-sub__hint{display:none}
+.gallery__prog{display:none}
+
+/* ── Approach ───────────────────────────────────────────────── */
+.approach{padding-block:var(--sec)}
+.approach__grid{
+  display:grid;gap:clamp(2.5rem,6vw,5rem);align-items:center;
+  grid-template-columns:1fr;margin-bottom:var(--sec)
+}
+.approach__media{margin:0;overflow:hidden;border-radius:3px;background:var(--bone)}
+.approach__media video{width:100%;aspect-ratio:9/16;object-fit:cover}
+.approach__media--photo{-webkit-mask-image:radial-gradient(#000,#000)} /* forces a compositor layer, keeps the zoom smooth */
+/* Full photo, never cropped — width-constrained only, height follows its
+   own natural aspect ratio. The two mobile breakpoints below both used
+   to force this into a short cover-cropped box; both now skip it. */
+.approach__img{width:100%;height:auto;display:block;transform:scale(1)}
+
+/* Inclusions — inside each rate card, collapsible so the prices always fit */
+.inc{margin-top:var(--s3);padding-top:var(--s2);border-top:1px solid var(--line)}
+.inc__toggle{
+  width:100%;min-height:48px;display:flex;align-items:center;justify-content:space-between;
+  gap:1rem;background:none;border:0;padding:.6rem 0;text-align:left;
+  font-family:var(--sans);font-size:.625rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--gold-ink);font-weight:400;
+  transition:color var(--t-ui) var(--e-out),transform var(--t-ui) var(--e-out)
+}
+.inc__toggle:hover{color:var(--espresso)}
+.inc__toggle:active{transform:scale(.99)}
+.inc__toggle svg{
+  width:15px;height:15px;flex:none;fill:none;stroke:var(--gold);stroke-width:1.5;
+  stroke-linecap:round;transition:transform var(--t-state) var(--e-out)
+}
+.inc__toggle[aria-expanded="true"] svg{transform:rotate(135deg)}
+.inc__panel{
+  display:grid;grid-template-rows:0fr;
+  transition:grid-template-rows var(--t-state) var(--e-out)
+}
+.inc__toggle[aria-expanded="true"]+.inc__panel{grid-template-rows:1fr}
+.inc__panel>div{overflow:hidden}
+.inc__list{
+  list-style:none;margin:0;padding:0;
+  display:grid;gap:.72rem;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr))
+}
+.inc__list li{
+  display:flex;align-items:center;gap:.7rem;
+  font-size:.9375rem;color:var(--umber);line-height:1.35
+}
+.inc__list{padding-top:.2rem;padding-bottom:.6rem}
+.ico{
+  width:19px;height:19px;flex:none;
+  fill:none;stroke:var(--gold);stroke-width:1.4;
+  stroke-linecap:round;stroke-linejoin:round
+}
+
+/* ── Pricing ────────────────────────────────────────────────── */
+.pricing{
+  position:relative;overflow:hidden;
+  padding-block:var(--sec);
+  background:
+    radial-gradient(75% 58% at 50% -8%,rgba(255,252,246,.9),rgba(255,252,246,0) 62%),
+    radial-gradient(62% 42% at 8% 24%,rgba(180,115,122,.12),rgba(180,115,122,0) 64%),
+    linear-gradient(180deg,var(--ivory) 0%,var(--bone) 48%,#EFE5D8 100%);
+  border-block:1px solid rgba(226,214,195,.72)
+}
+.pricing::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:url("../../media/paper-tile.webp");
+  background-size:280px auto;opacity:.2;mix-blend-mode:multiply
+}
+.pricing>.wrap{position:relative;z-index:1}
+.toggle{
+  position:relative;display:flex;margin:0 auto var(--s5);
+  width:min(340px,100%);padding:4px;
+  background:rgba(251,248,243,.62);border:1px solid rgba(226,214,195,.82);border-radius:999px;
+  box-shadow:0 14px 34px rgba(80,62,44,.08), inset 0 1px 0 rgba(255,255,255,.54);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)
+}
+.toggle__btn{
+  position:relative;z-index:1;flex:1;min-height:44px;background:none;border:0;
+  font-size:.6875rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--umber);
+  transition:color var(--t-state) var(--e-out),transform var(--t-ui) var(--e-out)
+}
+.toggle__btn.is-active{color:var(--ivory)}
+/* Same press feel as the hero buttons — settles back on release */
+.toggle__btn:active{transform:scale(.96)}
+.toggle__pill{
+  position:absolute;top:4px;left:4px;width:calc(50% - 4px);height:calc(100% - 8px);
+  background:var(--espresso);border-radius:999px;
+  transition:transform var(--t-state) var(--e-out)
+}
+.toggle[data-i="1"] .toggle__pill{transform:translateX(100%)}
+
+.rates{display:grid;gap:var(--gap);grid-template-columns:1fr}
+.rate-card{
+  background:linear-gradient(180deg,rgba(251,248,243,.72),rgba(246,237,227,.5));
+  border:1px solid rgba(226,214,195,.76);border-radius:6px;
+  padding:clamp(1.75rem,4vw,2.75rem);
+  box-shadow:0 20px 52px rgba(80,62,44,.09), inset 0 1px 0 rgba(255,255,255,.58);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  transition:transform var(--t-state) var(--e-out),
+             border-color var(--t-state) var(--e-out),
+             box-shadow var(--t-state) var(--e-out)
+}
+/* Gentle lift, echoing the hero buttons — pointer devices only, so a
+   touch tap never leaves a card stuck in a hovered state. */
+@media (hover:hover){
+  .rate-card:hover{
+    transform:translateY(-3px);border-color:var(--gold);
+    box-shadow:0 24px 60px rgba(80,62,44,.14), inset 0 1px 0 rgba(255,255,255,.7)
+  }
+}
+.rate-card__title{
+  font-family:var(--display);font-size:1.7rem;font-weight:400;
+  padding-bottom:var(--s3);margin-bottom:var(--s2);border-bottom:1px solid var(--line)
+}
+.rate-list{margin:0}
+.rate-list>div{
+  display:flex;align-items:baseline;justify-content:space-between;gap:1rem;
+  padding-block:.95rem;border-bottom:1px solid var(--line)
+}
+.rate-list>div:last-child{border-bottom:0;padding-bottom:0}
+.rate-list dt{color:var(--umber);font-size:1rem}
+.rate-list dd{
+  margin:0;font-family:var(--display);font-size:1.55rem;
+  /* Cormorant defaults to oldstyle figures — prices need to scan cleanly */
+  font-variant-numeric:lining-nums tabular-nums;
+  font-feature-settings:"lnum" 1,"tnum" 1;
+  letter-spacing:.01em
+}
+.rates__note{
+  margin-top:var(--s5);text-align:center;font-size:.875rem;
+  color:var(--umber);max-width:52ch;margin-inline:auto;line-height:1.7
+}
+
+/* ── About ──────────────────────────────────────────────────── */
+.about{
+  position:relative;overflow:hidden;
+  padding-block:var(--sec);
+  background:
+    radial-gradient(68% 54% at 82% 18%,rgba(255,252,246,.86),rgba(255,252,246,0) 62%),
+    radial-gradient(55% 46% at 6% 84%,rgba(169,139,93,.13),rgba(169,139,93,0) 68%),
+    linear-gradient(180deg,#EFE5D8 0%,var(--bone) 42%,var(--ivory) 100%);
+  border-block:1px solid rgba(226,214,195,.72)
+}
+.about::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:url("../../media/paper-tile.webp");
+  background-size:320px auto;opacity:.16;mix-blend-mode:multiply
+}
+.about__grid{display:grid;gap:clamp(2.5rem,6vw,4.5rem);grid-template-columns:1fr;align-items:start}
+.about__grid{position:relative;z-index:1}
+.about__text{
+  padding:clamp(1.25rem,4vw,2.25rem);
+  margin:calc(clamp(1.25rem,4vw,2.25rem) * -1);
+  background:linear-gradient(180deg,rgba(251,248,243,.5),rgba(251,248,243,.18));
+  border:1px solid rgba(226,214,195,.48);border-radius:6px;
+  box-shadow:0 22px 58px rgba(80,62,44,.07), inset 0 1px 0 rgba(255,255,255,.5);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)
+}
+.about__photo{margin:0}
+.about__photo img{
+  width:min(320px,72%);border-radius:6px;
+  filter:saturate(.94);
+  box-shadow:0 22px 54px rgba(80,62,44,.14)
+}
+.about__photo figcaption{
+  margin-top:var(--s2);font-size:.625rem;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--gold-ink)
+}
+.facts{
+  display:grid;gap:0;margin:var(--s5) 0 0;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr))
+}
+.facts>div{padding:1rem 0;border-top:1px solid var(--line)}
+.facts dt{font-size:.625rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-ink);margin-bottom:.35rem}
+.facts dd{margin:0;font-family:var(--display);font-size:1.3rem}
+
+/* ── FAQ ────────────────────────────────────────────────────── */
+.faq{padding-block:var(--sec)}
+.faq__grid{display:grid;gap:clamp(2.5rem,6vw,4.5rem);grid-template-columns:1fr;align-items:start}
+.acc{border-top:1px solid var(--line)}
+.acc__item{border-bottom:1px solid var(--line)}
+.acc__item h3{margin:0}
+.acc__q{
+  width:100%;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;
+  background:none;border:0;padding:1.5rem 0;text-align:left;
+  font-family:var(--display);font-size:clamp(1.15rem,2.6vw,1.4rem);font-weight:400;
+  line-height:1.35;min-height:56px;
+  transition:color var(--t-ui)
+}
+.acc__q:hover{color:var(--gold-ink)}
+.acc__q svg{
+  width:18px;height:18px;flex:none;fill:none;stroke:var(--gold);stroke-width:1.3;
+  stroke-linecap:round;transition:transform var(--t-state) var(--e-out)
+}
+.acc__q[aria-expanded="true"] svg{transform:rotate(135deg)}
+.acc__a{
+  display:grid;grid-template-rows:0fr;
+  transition:grid-template-rows var(--t-state) var(--e-out)
+}
+.acc__item.is-open .acc__a{grid-template-rows:1fr}
+.acc__a>div{overflow:hidden}
+.acc__a p{padding-bottom:1.5rem;color:var(--umber);max-width:56ch}
+
+/* ── Enquire ────────────────────────────────────────────────── */
+.enquire{background:var(--noir);color:var(--ivory);padding-block:var(--sec)}
+.enquire__inner{max-width:820px}
+.form{margin-top:var(--s6);display:grid;gap:var(--s4)}
+.form__row{display:grid;gap:var(--s4);grid-template-columns:1fr}
+.field{display:grid;gap:.6rem;border:0;padding:0;margin:0;min-width:0}
+.field label,.field legend{
+  font-size:.625rem;letter-spacing:.26em;text-transform:uppercase;color:var(--sand);padding:0
+}
+.field label span,.field legend span{color:var(--gold)}
+.field__opt{letter-spacing:.12em;opacity:.65;text-transform:none;font-size:.7rem}
+.field input,.field textarea{
+  width:100%;min-height:52px;padding:.9rem 0;
+  background:transparent;color:var(--ivory);
+  border:0;border-bottom:1px solid rgba(232,220,202,.32);
+  border-radius:0;font-family:var(--sans);font-size:1rem;font-weight:300;
+  transition:border-color var(--t-state) var(--e-out)
+}
+.field textarea{resize:vertical;line-height:1.7;min-height:88px}
+.field input::placeholder,.field textarea::placeholder{color:rgba(232,220,202,.42)}
+.field input:focus,.field textarea:focus{outline:0;border-bottom-color:var(--gold)}
+.field input:focus-visible,.field textarea:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+.field input[aria-invalid="true"]{border-bottom-color:#E0908F}
+.field__err{font-size:.8125rem;color:#F0B4B3;min-height:0}
+.field__err:empty{display:none}
+.field__hint{font-size:.8125rem;color:rgba(232,220,202,.6)}
+/* dark-scheme date picker indicator */
+.field input[type="date"]{color-scheme:dark}
+
+.chips{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.3rem}
+.chip{position:relative;display:inline-flex}
+.chip input{
+  position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer
+}
+.chip span{
+  display:inline-flex;align-items:center;min-height:44px;padding:.6rem 1.2rem;
+  border:1px solid rgba(232,220,202,.32);border-radius:999px;
+  font-size:.8125rem;color:var(--sand);
+  transition:background var(--t-state) var(--e-out),border-color var(--t-state) var(--e-out),color var(--t-state) var(--e-out)
+}
+.chip input:checked+span{background:var(--sand);border-color:var(--sand);color:var(--noir)}
+.chip input:focus-visible+span{outline:2px solid var(--gold);outline-offset:3px}
+.chip:hover span{border-color:var(--sand)}
+.form__note{text-align:center;font-size:.8125rem;color:rgba(232,220,202,.6)}
+
+/* ── Footer ─────────────────────────────────────────────────── */
+.foot{background:var(--noir);color:var(--sand);padding-top:var(--s7);
+  padding-bottom:calc(var(--s5) + env(safe-area-inset-bottom))}
+.foot__grid{display:grid;gap:var(--s5);grid-template-columns:1fr;
+  padding-bottom:var(--s6);border-bottom:1px solid rgba(232,220,202,.16)}
+.foot__eyebrow{font-size:.5625rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem}
+.foot__name{font-family:var(--display);font-size:2rem;color:var(--ivory);line-height:1}
+.foot__tag{margin-top:var(--s2);max-width:34ch;font-size:.9375rem;opacity:.72;line-height:1.7}
+.foot__col h4{font-size:.625rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:var(--s3);font-weight:400}
+.foot__col a,.foot__col p{display:block;padding-block:.42rem;font-size:.9375rem;opacity:.8;
+  transition:opacity var(--t-ui)}
+.foot__col a:hover{opacity:1;color:var(--ivory)}
+.foot__base{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;
+  padding-top:var(--s4);font-size:.75rem;opacity:.55;letter-spacing:.06em}
+
+/* ── Sticky mobile CTA ──────────────────────────────────────── */
+.cta-bar{
+  position:fixed;left:0;right:0;bottom:0;z-index:calc(var(--z-nav) - 1);
+  padding:.75rem clamp(1rem,4vw,1.5rem) calc(.75rem + env(safe-area-inset-bottom));
+  background:rgba(251,248,243,.93);backdrop-filter:blur(14px);
+  border-top:1px solid var(--line);
+  transform:translateY(140%);transition:transform var(--t-state) var(--e-out)
+}
+.cta-bar.is-shown{transform:none}
+
+/* ── Lightbox ───────────────────────────────────────────────── */
+.lb{
+  position:fixed;inset:0;z-index:var(--z-lb);
+  background:rgba(15,12,10,.96);backdrop-filter:blur(8px);
+  display:grid;place-items:center;padding:clamp(3.5rem,8vw,5rem) clamp(1rem,5vw,4.5rem);
+  opacity:0;transition:opacity var(--t-state) var(--e-out)
+}
+/* Same fix as .menu[hidden] above: without this, `display:grid` beats the
+   browser's `[hidden]{display:none}` and the lightbox sits over the entire
+   site — invisible, but still catching every click — even when closed. */
+.lb[hidden]{display:none}
+.lb.is-open{opacity:1}
+.lb__stage{margin:0;display:grid;place-items:center;max-width:100%;max-height:100%}
+.lb__stage img,.lb__stage video{
+  max-width:100%;max-height:calc(100svh - clamp(7rem,16vw,10rem));
+  width:auto;height:auto;border-radius:3px;
+  animation:lbIn var(--t-state) var(--e-out)
+}
+@keyframes lbIn{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:none}}
+.lb__close,.lb__nav{
+  position:absolute;width:52px;height:52px;display:grid;place-items:center;
+  background:rgba(251,248,243,.1);border:1px solid rgba(251,248,243,.22);
+  border-radius:50%;color:var(--ivory);
+  transition:background var(--t-ui) var(--e-out)
+}
+.lb__close:hover,.lb__nav:hover{background:rgba(251,248,243,.2)}
+.lb__close{top:clamp(1rem,3vw,1.75rem);right:clamp(1rem,3vw,1.75rem)}
+.lb__nav--prev{left:clamp(.5rem,2vw,1.75rem);top:50%;transform:translateY(-50%)}
+.lb__nav--next{right:clamp(.5rem,2vw,1.75rem);top:50%;transform:translateY(-50%)}
+.lb__close svg,.lb__nav svg{width:20px;height:20px;fill:none;stroke:currentColor;
+  stroke-width:1.3;stroke-linecap:round}
+.lb__count{
+  position:absolute;bottom:clamp(1.25rem,3vw,2rem);left:50%;transform:translateX(-50%);
+  font-size:.6875rem;letter-spacing:.26em;color:var(--sand);opacity:.7;
+  font-variant-numeric:tabular-nums
+}
+
+/* ── Scroll reveal ───────────────────────────────────────────
+   .pre is set by an inline head script before paint, so opted-in
+   elements never flash visible before GSAP takes over. If the
+   library never loads, motion.js drops .pre and everything shows. */
+.pre [data-anim]{opacity:0}
+.pre #gallery .tile{opacity:0}
+.pre #gallery .tile.is-in{opacity:1}
+[data-anim].is-in,.motion-off [data-anim]{opacity:1!important;transform:none!important}
+
+/* Split-text wrappers produced by motion.js */
+.sp{display:inline-block;overflow:hidden;vertical-align:bottom;
+  padding-bottom:.14em;margin-bottom:-.14em}
+.sp__i{display:inline-block;will-change:transform}
+
+/* ══ Breakpoints ═══════════════════════════════════════════════ */
+
+/* Phones: the gallery becomes a one-screen swipe rail instead of a
+   15-tile stack (~7700px of scrolling). Full images stay in the lightbox. */
+@media (max-width:679px){
+  .gallery{
+    columns:auto;display:flex;gap:var(--gap);
+    overflow-x:auto;overscroll-behavior-x:contain;
+    scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+    scrollbar-width:none;padding-bottom:var(--s2)
+  }
+  .gallery::-webkit-scrollbar{display:none}
+  .tile{
+    flex:0 0 74%;margin:0;scroll-snap-align:center;
+    height:clamp(360px,56svh,520px)
+  }
+  .tile img,.tile video{width:100%;height:100%;object-fit:cover}
+
+  .sec-sub__hint{
+    display:block;margin-top:.7rem;
+    font-size:.6875rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--gold-ink)
+  }
+  .gallery__prog{
+    display:flex;align-items:center;gap:1rem;
+    margin-top:var(--s3);padding-bottom:var(--sec)
+  }
+  .gallery__count{
+    font-size:.6875rem;letter-spacing:.2em;color:var(--gold-ink);
+    font-variant-numeric:tabular-nums;flex:none
+  }
+  .gallery__track{flex:1;height:1px;background:var(--line);position:relative;overflow:hidden}
+  .gallery__bar{
+    position:absolute;inset:0 auto 0 0;width:12%;background:var(--gold-ink);
+    transform-origin:left;transition:transform 120ms linear
+  }
+  .portfolio .gallery{padding-bottom:var(--s2)}
+
+  /* Feature clips: cap height so they don't eat a whole screen.
+     .approach__img is deliberately excluded — that photo must show
+     in full, never cropped (see the dedicated rule near its selector). */
+  .believe__media video,.approach__media video{
+    aspect-ratio:auto;height:clamp(340px,52svh,480px);object-fit:cover
+  }
+
+  /* Pricing must read in a single screen — tighten the vertical rhythm
+     and let the inclusions collapse behind a disclosure. */
+  .pricing{padding-block:clamp(2.25rem,7vw,3.5rem)}
+  .pricing .sec-head{margin-bottom:var(--s3)}
+  .pricing .eyebrow{margin-bottom:var(--s2)}
+  .pricing .sec-title{font-size:2.05rem}
+  .pricing .sec-sub{margin-top:.55rem;font-size:.9063rem;line-height:1.55}
+  .toggle{margin-bottom:var(--s3)}
+  .rate-card{padding:1.1rem 1.25rem}
+  .rate-list>div{padding-block:.58rem}
+  .rate-list dt{font-size:.9375rem}
+  .rate-list dd{font-size:1.32rem}
+  .rates__note{margin-top:var(--s2);font-size:.8125rem;line-height:1.55}
+}
+
+@media (min-width:680px){
+  .gallery{columns:2}
+  .form__row{grid-template-columns:1fr 1fr}
+  .foot__grid{grid-template-columns:1.4fr 1fr 1fr}
+}
+
+@media (min-width:880px){
+  /* The hero clip is a 9:16 portrait shot. Full 100svh on a wide desktop
+     viewport forces object-fit:cover to stretch it so wide that the crop
+     eats almost the entire frame, and the block ends up dominating the
+     whole first screen the way it never does on a tall, narrow phone.
+     Capping well below viewport height keeps the crop reasonable and
+     lets the next section peek in above the fold; object-position biases
+     toward the top since the face/veil sits in the upper third of frame. */
+  .hero__frame{height:min(70vh,640px);min-height:460px}
+  .hero__video,.hero__poster{object-position:50% 15%}
+  .hero__content{max-width:46ch}
+  .hero__actions{flex-wrap:nowrap}
+  .believe__grid{grid-template-columns:1.05fr .82fr}
+  /* Column order matches the DOM order used on mobile (text, then image) */
+  .approach__grid{grid-template-columns:1.05fr .82fr}
+  .about__grid{grid-template-columns:380px 1fr}
+  .about__photo img{width:100%}
+  .faq__grid{grid-template-columns:.85fr 1.15fr}
+}
+
+@media (min-width:1080px){
+  .gallery{columns:3}
+  /* staggered editorial rhythm across columns */
+  .tile[data-i="1"],.tile[data-i="4"],.tile[data-i="8"],.tile[data-i="12"]{margin-top:0}
+}
+
+@media (max-width:559px){
+  .hero__meta-x{display:none}
+}
+
+/* Short phones (SE-class): tighten pricing further so it still reads in one
+   screen. The intro line is dropped — the card states the same thing. */
+@media (max-width:679px) and (max-height:730px){
+  .pricing{padding-block:1.6rem}
+  .pricing .sec-title{font-size:1.8rem}
+  .pricing .sec-sub{display:none}
+  .pricing .sec-head{margin-bottom:var(--s2)}
+  .rate-card{padding:.9rem 1.15rem}
+  .rate-list>div{padding-block:.44rem}
+  .rate-list dd{font-size:1.2rem}
+  .inc__toggle{min-height:44px;padding:.4rem 0}
+  .rates__note{font-size:.75rem;margin-top:.75rem}
+}
+
+@media (max-width:899px){
+  .nav__links,.nav__cta{display:none}
+  .nav__toggle{display:grid}
+}
+
+/* The toggle drives which rate card shows, on every screen size — no more
+   side-by-side cards at wider widths, matching the mobile experience. */
+.rates .rate-card{display:none}
+.rates .rate-card.is-shown{display:block}
+.rate-card__title{display:none}
+
+@media (min-width:900px){
+  .cta-bar{display:none}
+  .menu{display:none !important}
+}
+
+/* Landscape phones: hero shouldn't eat the whole screen */
+@media (max-height:520px) and (orientation:landscape){
+  .hero__frame{min-height:440px;height:auto;aspect-ratio:16/9}
+  .hero__content{bottom:3.5rem;max-width:46ch}
+  .hero__name{font-size:clamp(2.4rem,7vw,3.6rem)}
+}
+
+/* ── Reduced motion ─────────────────────────────────────────── */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms !important;animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;scroll-behavior:auto !important
+  }
+  .reveal{opacity:1;transform:none}
+  /* The brand ticker is exempt: a slow, linear, low-amplitude scroll with
+     no flashing or parallax — benign enough to keep moving even under
+     reduced-motion, and it's the one animation on the site meant to be
+     continuous rather than a one-off reveal. Needs its own !important to
+     beat the universal *{animation-duration:.01ms !important} reset above,
+     since among competing !important rules the more specific selector wins. */
+  .marquee__track{
+    animation-duration:42s !important;
+    animation-iteration-count:infinite !important
+  }
+  .hero__scroll-line{animation:none;opacity:.7}
+  .curtain{display:none}
+  .tile:hover img,.tile:hover video{transform:none}
+}
+
+@media print{
+  .nav,.menu,.cta-bar,.lb,.curtain,.hero__scroll,.marquee{display:none !important}
+  body{background:#fff}
+}

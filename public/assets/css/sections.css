@@ -1,0 +1,458 @@
+/* ══════════════════════════════════════════════════════════════
+   Sections added in the editorial rebuild.
+   Loaded after styles.css; overrides where the two meet.
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── ③ Statement — contained stillness, no image ────────────── */
+.statement-sec{padding-block:var(--sec);background:var(--ivory)}
+.statement-sec__inner{
+  max-width:24ch;margin-inline:auto;text-align:center;
+  padding-inline:clamp(1.25rem,6vw,2.5rem)
+}
+.statement-sec .statement{max-width:none}
+
+/* ── ⑤ The letter — its own deliberate pause ──────────────────
+   The photograph is left intact: no cut-out, no fake flap. Tapping
+   the envelope now brings the handwritten note forward as a single
+   image-like paper layer instead of opening extra page height below. */
+.letter{
+  padding-block:clamp(3.5rem,9vw,7rem);
+  background:linear-gradient(180deg,var(--ivory) 0%,var(--bone) 45%,var(--ivory) 100%);
+  text-align:center;overflow:hidden
+}
+.letter__cue{
+  font-size:.6875rem;letter-spacing:.34em;text-transform:uppercase;
+  color:var(--gold-ink);margin-bottom:clamp(1.5rem,4vw,2.5rem)
+}
+
+.env-stage{position:relative;width:min(760px,92vw);margin-inline:auto}
+
+.env{
+  position:relative;display:block;width:100%;padding:0;border:0;
+  background:none;cursor:pointer;
+  transition:transform var(--t-state) var(--e-out),opacity var(--t-state) var(--e-out)
+}
+.env__frame{position:relative;display:block}
+/* filter:drop-shadow (not box-shadow) follows the image's actual alpha
+   shape — the crop fades to transparent at its edges, so a box-shadow
+   here would quietly redraw the rectangle the fade was meant to remove. */
+.env__scene{
+  width:100%;height:auto;display:block;
+  filter:drop-shadow(0 16px 26px rgba(80,62,44,.16));
+  transition:filter var(--t-state) var(--e-out)
+}
+.env:hover .env__scene{filter:drop-shadow(0 22px 36px rgba(80,62,44,.22))}
+
+/* Acknowledgment lands on the envelope itself. The new crop is tight —
+   the envelope fills nearly the whole frame, unlike the old wide-margin
+   photo — so the hit box only needs to back off the feathered edge. */
+.env__hit{
+  position:absolute;inset:3%;
+  border-radius:2px;pointer-events:none;
+  box-shadow:0 0 0 0 rgba(169,139,93,0);
+  transition:box-shadow var(--t-state) var(--e-out),
+             background var(--t-state) var(--e-out)
+}
+.env:hover .env__hit{
+  background:rgba(255,250,242,.16);
+  box-shadow:0 0 0 1px rgba(169,139,93,.5), 0 14px 30px rgba(80,62,44,.16)
+}
+.env:active{transform:scale(.994)}
+/* Sits below the photograph rather than on it — the image keeps its own
+   texture, and the affordance still reads as part of the envelope. */
+.env__hint{
+  display:inline-flex;align-items:center;gap:.55rem;
+  margin-top:1.1rem;
+  font-size:.625rem;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--gold-ink);white-space:nowrap;
+  border-bottom:1px solid var(--line);padding-bottom:.4rem;
+  transition:color var(--t-ui) var(--e-out),border-color var(--t-ui) var(--e-out)
+}
+.env__hint::after{content:"";width:1.1rem;height:1px;background:currentColor;opacity:.7}
+.env:hover .env__hint{color:var(--espresso);border-color:var(--gold)}
+
+.letter--concept{
+  position:relative;
+  /* Top padding adds env(safe-area-inset-top) explicitly — without it,
+     the cue text ("A letter, for you") can render partly behind the
+     fixed nav on notched phones, or when jumping here via the in-page
+     nav link, since the nav's own height grows by that same safe-area
+     amount but this section's padding didn't account for it. */
+  padding-top:calc(clamp(4rem,12vw,7.5rem) + env(safe-area-inset-top));
+  padding-bottom:clamp(4rem,12vw,7.5rem);
+  background:
+    radial-gradient(78% 60% at 50% 0%,rgba(255,252,246,.86),rgba(255,252,246,0) 66%),
+    radial-gradient(60% 42% at 12% 84%,rgba(169,139,93,.12),rgba(169,139,93,0) 70%),
+    linear-gradient(180deg,var(--ivory) 0%,#F2E9DD 52%,var(--ivory) 100%)
+}
+.letter--concept::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:url("../../media/paper-tile.webp");
+  background-size:320px auto;opacity:.14;mix-blend-mode:multiply
+}
+.letter-concept__inner{position:relative;z-index:1}
+.letter-concept__line{
+  margin:-1rem auto clamp(1.6rem,5vw,2.6rem);
+  max-width:22ch;color:var(--umber);font-size:.95rem;line-height:1.65
+}
+.env-stage--concept{width:min(700px,90vw)}
+.env--concept{animation:envConceptSettle 900ms var(--e-out) both}
+.env-concept__surface{
+  position:relative;display:block;
+  padding:clamp(1.15rem,4vw,2.25rem);
+  border:1px solid rgba(226,214,195,.6);
+  border-radius:8px;
+  background:
+    linear-gradient(135deg,rgba(251,248,243,.7),rgba(246,237,227,.28)),
+    radial-gradient(70% 60% at 50% 34%,rgba(255,255,255,.52),rgba(255,255,255,0) 72%);
+  box-shadow:0 28px 70px rgba(80,62,44,.12), inset 0 1px 0 rgba(255,255,255,.56);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)
+}
+.env-concept__surface::after{
+  content:"";position:absolute;left:13%;right:13%;bottom:clamp(.85rem,3vw,1.4rem);
+  height:16px;border-radius:50%;
+  background:rgba(80,62,44,.18);filter:blur(18px);z-index:0
+}
+.env-concept__glow{
+  position:absolute;inset:9% 10% 18%;
+  background:radial-gradient(closest-side,rgba(169,139,93,.16),rgba(169,139,93,0));
+  pointer-events:none
+}
+.env-concept__frame{
+  position:relative;z-index:1;display:block;
+  transform:rotate(-.45deg);
+  transition:transform var(--t-state) var(--e-out),filter var(--t-state) var(--e-out)
+}
+.env-concept__scene{
+  filter:drop-shadow(0 20px 26px rgba(80,62,44,.18));
+  transform:scale(1.03)
+}
+.env-concept__seal{
+  position:absolute;left:50%;top:52%;
+  width:18%;aspect-ratio:1;border-radius:50%;
+  transform:translate(-50%,-50%);
+  box-shadow:0 0 0 0 rgba(169,139,93,0);
+  transition:box-shadow var(--t-state) var(--e-out),background var(--t-state) var(--e-out)
+}
+.env--concept:hover .env-concept__frame{transform:rotate(0deg) translateY(-3px)}
+.env--concept:hover .env-concept__seal{
+  background:rgba(255,250,242,.12);
+  box-shadow:0 0 0 8px rgba(169,139,93,.1),0 0 0 1px rgba(169,139,93,.42)
+}
+.env-concept__hint{
+  display:inline-flex;align-items:center;gap:.6rem;
+  margin-top:1rem;color:var(--gold-ink);
+  font-size:.625rem;letter-spacing:.28em;text-transform:uppercase
+}
+.env-concept__hint::before,.env-concept__hint::after{
+  content:"";width:1.15rem;height:1px;background:currentColor;opacity:.55
+}
+.env-stage--concept.is-open .env--concept{transform:scale(.985);opacity:.72}
+@keyframes envConceptSettle{
+  from{opacity:0;transform:translateY(24px) scale(.985)}
+  to{opacity:1;transform:none}
+}
+
+/* Opened: the envelope stays put while the note takes over the viewport. */
+.env-stage.is-open .env{transform:scale(.985);opacity:.72}
+.env-stage.is-open .env__hint{opacity:0}
+
+.sheet-wrap{
+  position:fixed;inset:0;z-index:var(--z-lb);
+  display:grid;place-items:center;
+  padding:clamp(.75rem,3vw,1.5rem);
+  background:rgba(23,19,16,.48);
+  opacity:0;visibility:hidden;pointer-events:none;
+  transition:opacity 420ms var(--e-out),visibility 0s linear 420ms;
+  overscroll-behavior:contain
+}
+.env-stage.is-open .sheet-wrap{
+  opacity:1;visibility:visible;pointer-events:auto;
+  transition:opacity 420ms var(--e-out),visibility 0s
+}
+.sheet-inner{width:min(690px,100%);max-height:100%;display:grid;place-items:center}
+
+.sheet{
+  position:relative;width:100%;max-height:calc(100svh - clamp(1.5rem,6vw,3rem));
+  opacity:0;transform:translateY(16px) scale(.985);
+  transition:opacity 420ms var(--e-out),transform 560ms var(--e-out);
+}
+.env-stage.is-open .sheet{opacity:1;transform:none}
+
+/* Handwritten page image. It is one complete asset, scaled into the
+   viewport, so the opened letter never creates its own scroll area. */
+.sheet__paper{
+  position:relative;display:inline-block;
+  min-height:0;max-height:calc(100svh - clamp(4.5rem,10vw,6.5rem));
+  border-radius:2px;
+  box-shadow:0 26px 54px rgba(80,62,44,.26);
+  overflow:hidden
+}
+.letter__image{
+  display:block;width:auto;max-width:100%;
+  height:min(calc(100svh - clamp(4.5rem,10vw,6.5rem)),calc((100vw - clamp(1.5rem,6vw,3rem)) * 48 / 35));
+  max-height:calc(100svh - clamp(4.5rem,10vw,6.5rem));
+  object-fit:contain
+}
+.sheet__scroll{position:absolute;z-index:-1}
+
+/* Qualified for the same reason as .sheet__salut/.sheet__sign below —
+   a bare ".sheet__eyebrow" loses to ".sheet__paper p" on specificity. */
+.sheet__paper .sheet__eyebrow{
+  font-family:var(--sans);font-size:.6875rem;font-weight:500;
+  letter-spacing:.3em;text-transform:uppercase;color:var(--gold-ink);
+  line-height:var(--rule);margin:0 0 calc(var(--rule) * .55)
+}
+.sheet__paper p{
+  font-family:var(--hand);font-weight:500;
+  font-size:clamp(.98rem,2.05svh,1.28rem);line-height:var(--rule);
+  color:#3A2C21;margin:0 0 calc(var(--rule) * .62)
+}
+.sheet__paper p:last-child{margin-bottom:0}
+.sheet__paper em{font-style:normal;color:var(--gold-ink);font-weight:600}
+
+/* Qualified with .sheet__paper (two classes) so these beat the generic
+   ".sheet__paper p" rule above (one class + one element) on specificity —
+   a bare ".sheet__salut" alone would lose that fight regardless of order. */
+.sheet__paper .sheet__salut{
+  font-family:var(--script);font-weight:400;color:var(--gold-ink);
+  font-size:clamp(1.9rem,5.8svh,2.75rem);line-height:calc(var(--rule) * 1.55);
+  margin:0 0 calc(var(--rule) * .42)
+}
+/* The four short lines read as one tight, back-to-back list — no blank
+   ruled row between them, matching how a real note would list them. */
+.sheet__list{display:block;margin:0 0 calc(var(--rule) * .62)}
+.sheet__list span{display:block;line-height:var(--rule)}
+
+.sheet__paper .sheet__sign{
+  margin-top:calc(var(--rule) * .24);font-family:var(--hand);font-weight:500;
+  font-size:clamp(1.15rem,3.4vw,1.32rem);color:#3A2C21;line-height:var(--rule)
+}
+.sheet__paper .sheet__sign span{
+  display:block;margin-top:calc(var(--rule) * .08);
+  font-family:var(--script);font-weight:400;
+  font-size:clamp(2.15rem,6svh,3.1rem);line-height:calc(var(--rule) * 1.42);
+  letter-spacing:.01em;color:var(--gold-ink)
+}
+.sheet__fold{
+  position:absolute;z-index:2;top:.7rem;right:.7rem;
+  width:2rem;height:2rem;display:grid;place-items:center;
+  margin:0;padding:0;border:1px solid rgba(169,139,93,.28);
+  border-radius:50%;background:rgba(251,248,243,.76);
+  color:var(--gold-ink);box-shadow:0 10px 24px rgba(80,62,44,.12), inset 0 1px 0 rgba(255,255,255,.6);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  transition:opacity var(--t-ui) var(--e-out),transform var(--t-ui) var(--e-out),
+             border-color var(--t-ui) var(--e-out),color var(--t-ui) var(--e-out)
+}
+.sheet__fold span{font-family:var(--sans);font-size:1.2rem;line-height:1;transform:translateY(-1px)}
+.sheet__fold:hover{border-color:var(--gold);color:var(--espresso);transform:translateY(-1px)}
+.sheet__fold:active{transform:scale(.96)}
+
+@media (max-width:520px){
+  .sheet-wrap{padding:.55rem}
+  .sheet-inner{width:100%}
+  .sheet{max-height:calc(100svh - 1.1rem)}
+  .sheet__paper{
+    max-height:calc(100svh - 4.25rem)
+  }
+  .letter__image{
+    height:min(calc(100svh - 4.25rem),calc((100vw - 1.1rem) * 48 / 35));
+    max-height:calc(100svh - 4.25rem)
+  }
+  .sheet__paper .sheet__eyebrow{font-size:.46rem;letter-spacing:.22em}
+  .sheet__paper p{font-size:clamp(.84rem,3.15vw,.98rem);margin-bottom:calc(var(--rule) * .43)}
+  .sheet__paper .sheet__salut{font-size:clamp(1.55rem,6.4vw,1.95rem)}
+  .sheet__paper .sheet__sign{font-size:clamp(.84rem,3.15vw,.98rem)}
+  .sheet__paper .sheet__sign span{font-size:clamp(1.65rem,7vw,2.15rem)}
+  .sheet__fold{top:.55rem;right:.55rem;width:1.85rem;height:1.85rem}
+}
+
+/* The full-bleed break section (video + line) was replaced by the
+   envelope/letter moment above — its clip moved into the portfolio. */
+
+/* ── ⑨ How booking works — the one numbered progression ─────────
+   A thin gold spine runs behind the numerals, connecting 01→04 into
+   one continuous sequence rather than four separately-divided rows. */
+.steps{
+  position:relative;overflow:hidden;
+  padding-block:var(--sec);
+  background:
+    radial-gradient(70% 60% at 14% 18%,rgba(255,252,246,.84),rgba(255,252,246,0) 62%),
+    radial-gradient(55% 48% at 92% 82%,rgba(180,115,122,.105),rgba(180,115,122,0) 68%),
+    linear-gradient(180deg,#EFE5D8 0%,var(--bone) 50%,#F2E9DD 100%);
+  border-block:1px solid rgba(226,214,195,.72)
+}
+.steps::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:url("../../media/paper-tile.webp");
+  background-size:300px auto;opacity:.17;mix-blend-mode:multiply
+}
+.steps>.wrap{position:relative;z-index:1}
+.steps__list{
+  list-style:none;margin:0;padding:0;position:relative;
+  display:grid;gap:clamp(2.25rem,6vw,3rem)
+}
+/* The spine: a single line from the first numeral to the last, laid
+   under everything, clipped to the numeral column's centre. */
+.steps__list::before{
+  content:"";position:absolute;top:.35em;bottom:1.6em;
+  left:clamp(1.35rem,4.2vw,1.9rem);width:1px;
+  background:linear-gradient(var(--line),var(--gold) 12%,var(--gold) 88%,var(--line));
+  z-index:0
+}
+/* No card chrome — the spine line + numerals carry the sequence, the
+   same restraint used everywhere else on the site (no cards, no
+   borders, no drop-shadows standing in for the page's own background). */
+.steps__item{
+  position:relative;z-index:1;
+  display:grid;grid-template-columns:clamp(2.7rem,8vw,3.8rem) 1fr;
+  gap:0 clamp(1rem,3.5vw,1.6rem);align-items:start;
+  padding-block:clamp(1rem,3.5vw,1.35rem)
+}
+.steps__n{
+  font-family:var(--display);font-weight:300;color:var(--gold);
+  font-size:clamp(1.9rem,6vw,2.5rem);line-height:1;
+  font-variant-numeric:lining-nums tabular-nums;
+  background:linear-gradient(180deg,rgba(251,248,243,.82),rgba(246,237,227,.5));
+  width:fit-content;padding:.05em .3em .05em 0
+}
+.steps__body h3{
+  font-family:var(--display);font-weight:400;font-size:clamp(1.3rem,3vw,1.65rem);
+  margin-bottom:.4rem
+}
+.steps__body p{color:var(--umber);font-size:.9375rem;line-height:1.6;max-width:44ch}
+
+/* ── ⑩ Testimonials — one autoplay quote player, every screen size ──
+   Same design at every breakpoint now: a soft paper-textured ground,
+   one quote card centred, prev/next + dots always visible, autoplay
+   always on (only reduced-motion visitors get it switched off). No
+   separate desktop treatment, no pinning, no portrait backdrops. */
+.words{
+  position:relative;
+  background:
+    radial-gradient(72% 58% at 50% 0%,rgba(255,252,246,.78),rgba(255,252,246,0) 66%),
+    radial-gradient(62% 46% at 12% 88%,rgba(169,139,93,.14),rgba(169,139,93,0) 70%),
+    linear-gradient(180deg,#F2E9DD 0%,var(--bone) 45%,var(--ivory) 100%);
+  color:var(--espresso)
+}
+.words::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:url("../../media/paper-tile.webp");
+  background-size:300px auto;opacity:.15;mix-blend-mode:multiply
+}
+.words__pin{
+  position:relative;z-index:1;
+  min-height:0;padding:clamp(3rem,12vw,4.25rem) 0;
+  display:flex;align-items:center;flex-direction:column
+}
+.words .eyebrow{color:var(--gold-ink);margin-bottom:1.35rem}
+.words__stage{
+  width:100%;max-width:none;min-height:clamp(235px,42vw,310px);
+  padding-inline:clamp(1rem,5vw,1.35rem)
+}
+.words__slide{padding:0}
+/* Visible-by-default, stacked in normal flow, so testimonials still read
+   fine with JS disabled. Once main.js adds words--carousel, the stage
+   becomes an overlap grid and slides hide until made active. */
+.words--carousel .words__stage{display:grid}
+.words--carousel .words__slide{
+  grid-area:1/1;align-self:center;
+  opacity:0;pointer-events:none;transform:translateY(8px);
+  transition:opacity .3s var(--e-out),transform .3s var(--e-out)
+}
+.words--carousel .words__slide.is-active{opacity:1;pointer-events:auto;transform:none}
+.words__portrait{display:none!important} /* not used by the quote-card design */
+.words__quote{
+  width:min(100%,360px);min-height:clamp(220px,30vw,280px);
+  margin-inline:auto;padding:1.35rem 1.2rem 1.2rem;
+  display:grid;align-content:center;gap:1.15rem;justify-items:center;
+  border:1px solid rgba(169,139,93,.24);
+  background:linear-gradient(180deg,rgba(251,248,243,.78),rgba(246,237,227,.5));
+  box-shadow:0 24px 58px rgba(80,62,44,.13), inset 0 1px 0 rgba(255,255,255,.62);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)
+}
+.words__quote::before{
+  content:"";display:block;width:2.8rem;height:1px;margin-inline:auto;
+  background:var(--gold);opacity:.75
+}
+.words__quote p{
+  font-family:var(--display);font-weight:300;font-style:italic;
+  font-size:clamp(1.35rem,3vw,1.75rem);line-height:1.36;
+  color:var(--espresso);max-width:18ch;text-wrap:balance
+}
+.words__quote cite{
+  font-family:var(--sans);font-style:normal;
+  font-size:.625rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-ink)
+}
+.words__controls{
+  display:flex;align-items:center;justify-content:center;gap:.65rem;
+  margin-top:1.15rem
+}
+.words__ctrl,.words__dot{
+  -webkit-tap-highlight-color:transparent;
+  border:1px solid rgba(226,214,195,.72);
+  background:rgba(251,248,243,.55);color:var(--gold-ink);
+  box-shadow:0 10px 28px rgba(80,62,44,.08), inset 0 1px 0 rgba(255,255,255,.52);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)
+}
+.words__ctrl{
+  width:2.45rem;height:2.45rem;border-radius:50%;
+  display:grid;place-items:center;padding:0
+}
+.words__ctrl svg{
+  width:1.05rem;height:1.05rem;fill:none;stroke:currentColor;
+  stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round
+}
+.words__dots{display:flex;align-items:center;gap:.45rem}
+.words__dot{
+  width:.52rem;height:.52rem;border-radius:50%;padding:0;
+  opacity:.48;transition:width var(--t-ui) var(--e-out),opacity var(--t-ui) var(--e-out),
+                      background var(--t-ui) var(--e-out)
+}
+.words__dot.is-active{
+  width:1.55rem;border-radius:999px;opacity:1;background:var(--gold)
+}
+
+/* ── ⑪ About — text first, portrait second ──────────────────── */
+/* height:auto is load-bearing: without it the img's height="900"
+   presentational hint wins and the portrait renders 900px tall. */
+.about__photo img{border-radius:2px;width:100%;height:auto}
+.about .facts{margin-top:var(--s4)}
+.about .facts>div{padding:.8rem 0}
+.about .facts dd{font-size:1.15rem;line-height:1.3}
+
+/* Lining figures scan faster than Sentient's default oldstyle */
+.rate-list dd,.steps__n,.facts dd{font-variant-numeric:lining-nums tabular-nums}
+
+@media (min-width:680px){
+  /* Steps keeps its single-column spine layout for now — a wide-screen
+     treatment is part of the later desktop pass, not this one. */
+
+  /* The base 24ch cap is tuned for a narrow phone column; at tablet/desktop
+     widths it forces the big display font into an almost one-word-per-line
+     stack. Widen it so the statement reads as a few short lines instead. */
+  .statement-sec__inner{max-width:52ch}
+}
+@media (min-width:880px){
+  .about__grid{grid-template-columns:1fr 380px}
+}
+@media (max-width:679px){
+  .letter{padding-block:clamp(2.75rem,9vw,4.5rem)}
+  .env-stage{width:min(440px,92vw)}
+  .about__photo{margin-top:var(--s4)}
+
+  /* Keep long sections near a single screen on phones */
+  .about{padding-block:clamp(3rem,10vw,5rem)}
+  .about__text{margin:0;padding:1.25rem}
+  .about__photo img{max-height:300px;object-fit:cover;object-position:50% 30%}
+  .approach{padding-block:clamp(3rem,10vw,5rem)}
+  .approach .body{margin-bottom:var(--s2)}
+  .statement-sec{padding-block:clamp(3.5rem,11vw,6rem)}
+  .statement-sec__inner{max-width:none}
+  .statement-sec .statement{font-size:clamp(1.6rem,6.2vw,2.4rem)}
+}
+
+/* Reduced motion: the letter still opens, it just stops performing. */
+@media (prefers-reduced-motion:reduce){
+  .env,.sheet,.sheet-wrap{transition:none!important}
+}

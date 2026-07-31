@@ -75,8 +75,8 @@ export const bridalSuite = {
     },
     mobile: {
       src: '/images/bridal-suite/room-mobile.webp',
-      w: 1536,
-      h: 1024,
+      w: 1122,
+      h: 1402,
       alt: 'A sunlit wooden table with an embroidered bridal journal, a candle, and a wax-sealed envelope for the bride, softly lit beside dried flowers',
     },
   },
@@ -93,7 +93,8 @@ export const bridalSuite = {
       id: 'album',
       label: 'The bridal journal',
       desktop: { x: 14.0, y: 18.5, w: 47.0, h: 65.0 },
-      mobile: { x: 14.0, y: 18.5, w: 47.0, h: 65.0 },
+      // Measured against the new mobile-only portrait still life.
+      mobile: { x: 9.0, y: 25.0, w: 47.0, h: 42.0 },
       zoom: { desktop: 2.2, mobile: 1.9, duration: 0.9, ease: [0.22, 1, 0.36, 1] },
       veil: 'rgba(28,26,23,0.35)',
     },
@@ -101,7 +102,7 @@ export const bridalSuite = {
       id: 'letter',
       label: 'A sealed letter',
       desktop: { x: 63.5, y: 34.0, w: 30.0, h: 34.0 },
-      mobile: { x: 63.5, y: 34.0, w: 30.0, h: 34.0 },
+      mobile: { x: 60.0, y: 32.0, w: 40.0, h: 24.0 },
       zoom: { desktop: 2.2, mobile: 1.9, duration: 0.9, ease: [0.22, 1, 0.36, 1] },
       veil: 'rgba(28,26,23,0.35)',
     },
@@ -109,7 +110,7 @@ export const bridalSuite = {
       id: 'candle',
       label: 'The candle',
       desktop: { x: 61.0, y: 5.5, w: 19.0, h: 27.0 },
-      mobile: { x: 61.0, y: 5.5, w: 19.0, h: 27.0 },
+      mobile: { x: 52.0, y: 5.0, w: 27.0, h: 26.0 },
       zoom: { desktop: 3.0, mobile: 2.4, duration: 1.2, ease: [0.16, 1, 0.3, 1] },
       veil: 'rgba(90,55,20,0.45)',
     },
@@ -117,7 +118,7 @@ export const bridalSuite = {
       id: 'flowers',
       label: 'The flowers',
       desktop: { x: 0.0, y: 8.8, w: 21.5, h: 55.7 },
-      mobile: { x: 0.0, y: 8.8, w: 21.5, h: 55.7 },
+      mobile: { x: 0.0, y: 4.0, w: 26.0, h: 50.0 },
       zoom: { desktop: 2.0, mobile: 1.8, duration: 1.0, ease: [0.22, 1, 0.36, 1] },
       veil: 'rgba(120,80,80,0.3)',
     },
@@ -459,7 +460,7 @@ const INCLUSIONS_PARTY = ['HD Makeup', 'Hairstyling', 'Draping', 'Lashes'];
 export const pricing = {
   eyebrow: 'Pricing',
   heading: 'Transparent, all-inclusive pricing',
-  intro: 'Every price below includes the full list of inclusions above.',
+  intro: 'Transparent all-inclusive pricing',
   tabs: [
     {
       id: 'delhi',
