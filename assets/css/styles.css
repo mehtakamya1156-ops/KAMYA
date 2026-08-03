@@ -612,17 +612,21 @@ p{margin:0}
 .cta-bar.is-shown{transform:none}
 
 /* ── Floating WhatsApp / Instagram buttons ───────────────────────
-   Two quiet, always-there contact shortcuts stacked bottom-right,
-   for visitors who'd rather message directly than use the enquiry
-   form. Sits above the sticky mobile CTA bar so nothing overlaps;
-   drops to a simple corner offset once that bar disappears at the
-   desktop breakpoint. */
+   Two quiet contact shortcuts stacked bottom-right, for visitors
+   who'd rather message directly than use the enquiry form. Hidden
+   over the hero (main.js adds is-shown once it's scrolled past) so
+   they don't compete with the hero's own CTAs; sits above the
+   sticky mobile CTA bar so nothing overlaps; drops to a simple
+   corner offset once that bar disappears at the desktop breakpoint. */
 .fab-stack{
   position:fixed;right:clamp(1rem,4vw,1.5rem);
   bottom:calc(92px + env(safe-area-inset-bottom));
   z-index:calc(var(--z-nav) - 1);
-  display:flex;flex-direction:column;gap:.7rem;align-items:center
+  display:flex;flex-direction:column;gap:.7rem;align-items:center;
+  pointer-events:none;transform:translateX(120%);
+  transition:transform var(--t-state) var(--e-out)
 }
+.fab-stack.is-shown{pointer-events:auto;transform:none}
 .fab{
   width:46px;height:46px;display:grid;place-items:center;border-radius:50%;
   background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.4);

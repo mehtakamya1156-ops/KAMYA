@@ -494,9 +494,15 @@
   /* ── Sticky mobile CTA ─────────────────────────────────────── */
   (function ctaBar() {
     var bar = $('#ctaBar'), hero = $('.hero'), form = $('#enquire'), foot = $('.foot');
-    if (!bar) return;
+    var fabStack = $('#fabStack');
+    if (!bar && !fabStack) return;
     var pastHero = false, atEnd = false;
-    var sync = function () { bar.classList.toggle('is-shown', pastHero && !atEnd); };
+    var sync = function () {
+      if (bar) bar.classList.toggle('is-shown', pastHero && !atEnd);
+      // The floating WhatsApp/Instagram buttons only need to stay clear of
+      // the hero itself — they don't need to duck out again near the foot.
+      if (fabStack) fabStack.classList.toggle('is-shown', pastHero);
+    };
 
     if ('IntersectionObserver' in window) {
       if (hero) new IntersectionObserver(function (e) {
