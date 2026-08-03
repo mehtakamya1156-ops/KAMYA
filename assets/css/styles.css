@@ -52,6 +52,12 @@ p{margin:0}
   font-size:clamp(2.4rem,6.2vw,4.4rem);letter-spacing:-.015em;line-height:1.02
 }
 .sec-title--light{color:var(--ivory)}
+/* A full question reads heavier than the short 1-2 word phrases this
+   display size was tuned for — scale it down so it doesn't dominate the
+   section. The line break in the markup is manual (not text-wrap:balance,
+   which isn't consistent across browsers) so the 2-line split is always
+   identical, not dependent on viewport width or font metrics. */
+#enquire .sec-title{font-size:clamp(1.9rem,5vw,2.9rem);line-height:1.18}
 .sec-sub{
   margin-top:var(--s3);color:var(--umber);font-size:1.0625rem;
   max-width:46ch;line-height:1.75

@@ -384,6 +384,11 @@
   font-family:var(--sans);font-style:normal;
   font-size:.625rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-ink)
 }
+.words__quote p.words__quote-meta{
+  margin-top:-.7rem;font-family:var(--sans);font-weight:400;font-style:normal;
+  font-size:.625rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--umber);opacity:.65;max-width:none
+}
 .words__controls{
   display:flex;align-items:center;justify-content:center;gap:.65rem;
   margin-top:1.15rem
