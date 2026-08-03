@@ -605,25 +605,29 @@ p{margin:0}
 }
 .cta-bar.is-shown{transform:none}
 
-/* ── Floating Instagram button ─────────────────────────────────
-   A quiet, always-there alternative for visitors who'd rather DM
-   on Instagram than go through the WhatsApp-driven enquiry form.
-   Sits above the sticky mobile CTA bar so the two never overlap;
+/* ── Floating WhatsApp / Instagram buttons ───────────────────────
+   Two quiet, always-there contact shortcuts stacked bottom-right,
+   for visitors who'd rather message directly than use the enquiry
+   form. Sits above the sticky mobile CTA bar so nothing overlaps;
    drops to a simple corner offset once that bar disappears at the
    desktop breakpoint. */
-.fab-ig{
+.fab-stack{
   position:fixed;right:clamp(1rem,4vw,1.5rem);
   bottom:calc(92px + env(safe-area-inset-bottom));
   z-index:calc(var(--z-nav) - 1);
-  width:52px;height:52px;display:grid;place-items:center;
-  background:var(--espresso);color:var(--ivory);border-radius:50%;
-  box-shadow:0 10px 28px rgba(23,19,16,.28);
-  transition:transform var(--t-ui) var(--e-out),background var(--t-state) var(--e-out)
+  display:flex;flex-direction:column;gap:.7rem;align-items:center
 }
-.fab-ig:hover{background:#3A2E26;transform:translateY(-2px)}
-.fab-ig svg{
-  width:24px;height:24px;fill:none;stroke:currentColor;
-  stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round
+.fab{
+  width:46px;height:46px;display:grid;place-items:center;border-radius:50%;
+  box-shadow:0 10px 24px rgba(23,19,16,.3);
+  transition:transform var(--t-ui) var(--e-out)
+}
+.fab:hover{transform:translateY(-2px)}
+.fab svg{width:23px;height:23px}
+.fab-wa{background:#25D366}
+.fab-ig{
+  background:radial-gradient(circle at 30% 107%,
+    #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%)
 }
 
 /* ── Lightbox ───────────────────────────────────────────────── */
@@ -682,6 +686,12 @@ p{margin:0}
 /* Phones: the gallery becomes a one-screen swipe rail instead of a
    15-tile stack (~7700px of scrolling). Full images stay in the lightbox. */
 @media (max-width:679px){
+  /* Smaller footprint on phones, where screen space is tighter and the
+     sticky CTA bar is already competing for the same corner. */
+  .fab-stack{gap:.55rem}
+  .fab{width:38px;height:38px}
+  .fab svg{width:19px;height:19px}
+
   .gallery{
     columns:auto;display:flex;gap:var(--gap);
     overflow-x:auto;overscroll-behavior-x:contain;
@@ -802,7 +812,7 @@ p{margin:0}
   .cta-bar{display:none}
   .menu{display:none !important}
   /* No sticky CTA bar to clear up here, so the button can sit lower. */
-  .fab-ig{bottom:clamp(1.25rem,3vw,1.75rem)}
+  .fab-stack{bottom:clamp(1.25rem,3vw,1.75rem)}
 }
 
 /* Landscape phones: hero shouldn't eat the whole screen */
@@ -835,6 +845,6 @@ p{margin:0}
 }
 
 @media print{
-  .nav,.menu,.cta-bar,.fab-ig,.lb,.curtain,.hero__scroll,.marquee{display:none !important}
+  .nav,.menu,.cta-bar,.fab-stack,.lb,.curtain,.hero__scroll,.marquee{display:none !important}
   body{background:#fff}
 }
